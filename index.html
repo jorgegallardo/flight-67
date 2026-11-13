@@ -182,18 +182,13 @@
       .plane-wrapper {
         position: relative;
         margin: 0 auto;
-        /* Fit the available vertical space inside plane-area padding when possible */
-        height: calc(100% - 32px);
-        /* Logical minimum: if the viewport is smaller than this, we scroll */
-        min-height: 600px;
-        max-height: 1000px;
         display: flex;
         align-items: center;
       }
 
       .wing {
         position: absolute;
-        width: 260px;
+        width: 280px;
         background-color: #cbd5e1;
         border: 2px solid #94a3b8;
         z-index: 0;
@@ -208,17 +203,17 @@
         top: 0;
         bottom: 0;
         margin: auto;
-        height: clamp(240px, 40%, 400px);
+        height: clamp(280px, 40%, 440px);
       }
 
       .wing.left {
-        left: -230px;
+        left: -250px;
         transform: skewY(-15deg);
         border-radius: 20px 0 0 80px;
         border-right: none;
       }
       .wing.right {
-        right: -230px;
+        right: -250px;
         transform: skewY(15deg);
         border-radius: 0 20px 80px 0;
         border-left: none;
@@ -240,15 +235,15 @@
 
       .fuselage {
         background-color: var(--fuselage-color);
-        border-radius: 140px 140px 50px 50px;
-        padding: clamp(50px, 8vh, 70px) 20px clamp(40px, 6vh, 60px) 20px;
-        width: 240px;
+        border-radius: 180px 180px 60px 60px;
+        padding: clamp(64px, 9vh, 80px) 24px clamp(48px, 6vh, 64px) 24px;
+        width: 286px;
         position: relative;
         border: 3px solid #94a3b8;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         z-index: 10;
         /* Comfortable height that fits on screen with margin */
-        height: clamp(600px, 75vh, 900px);
+        height: clamp(640px, 80vh, 880px);
         display: flex;
         flex-direction: column;
       }
@@ -256,11 +251,11 @@
       .fuselage::before {
         content: '';
         position: absolute;
-        top: 22px;
+        top: 26px;
         left: 50%;
         transform: translateX(-50%);
-        width: 100px;
-        height: 32px;
+        width: 130px;
+        height: 36px;
         background: #1e293b;
         border-radius: 16px 16px 8px 8px;
         border: 2px solid #475569;
@@ -268,8 +263,8 @@
 
       .cabin-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr) 32px repeat(2, 1fr);
-        column-gap: 8px;
+        grid-template-columns: repeat(2, 1fr) 36px repeat(2, 1fr);
+        column-gap: 10px;
         row-gap: 0px;
         flex: 1;
         align-content: space-evenly;
@@ -277,13 +272,13 @@
 
       @media (max-width: 1100px) {
         .wing {
-          width: 220px;
+          width: 240px;
         }
         .wing.left {
-          left: -190px;
+          left: -210px;
         }
         .wing.right {
-          right: -190px;
+          right: -210px;
         }
         .wing-logo {
           width: 45%;
@@ -291,7 +286,7 @@
       }
 
       .seat {
-        height: clamp(35px, 5vh, 40px);
+        height: clamp(40px, 5.2vh, 52px);
         background-color: var(--seat-available);
         border-radius: 6px 6px 10px 10px;
         cursor: pointer;
@@ -299,7 +294,7 @@
         justify-content: center;
         align-items: center;
         font-weight: 700;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         color: var(--primary-color);
         position: relative;
         transition: all 0.2s;

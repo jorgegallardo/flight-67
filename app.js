@@ -25,7 +25,7 @@ function calculateSuspectScore(passenger) {
     score += passenger.textScore;
   }
   if (toggleState.facial) {
-    score += passenger.facialScore;
+    score += Math.round(passenger.facialScore / 2);
   }
   if (toggleState.digital) {
     score += Math.floor(passenger.baseScore * 0.2);
@@ -74,19 +74,6 @@ function calculateSuspectScore(passenger) {
   }
   
   return percentage;
-}
-
-// Generate a consistent "random-looking" value based on passenger name
-// This ensures the facial confidence stays the same for each passenger
-function getConsistentConfidence(name) {
-  let hash = 0;
-  for (let i = 0; i < name.length; i++) {
-    hash = ((hash << 5) - hash) + name.charCodeAt(i);
-    hash = hash & hash; // Convert to 32-bit integer
-  }
-  // Convert hash to a value between 85 and 99
-  const normalized = Math.abs(hash % 1400) / 100; // 0 to 14
-  return (85 + normalized).toFixed(1);
 }
 
 // Platform display names
@@ -180,7 +167,7 @@ function renderPassengerProfile(container, passenger, isAlex = false) {
       ${toggleState.facial ? `
         <div class="confidence-box">
           <span class="confidence-label">Facial Recognition Confidence</span>
-          <div class="confidence-value">${getConsistentConfidence(passenger.name)}%</div>
+          <div class="confidence-value">${passenger.facialScore.toFixed(1)}%</div>
         </div>
       ` : ''}
     </div>
